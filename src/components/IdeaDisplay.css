@@ -178,3 +178,7 @@
     margin: 0 auto;
   }
   
+  .idea-item-title {
+    text-decoration: none;
+    color: #000;
+  }

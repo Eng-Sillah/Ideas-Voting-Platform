@@ -1,10 +1,11 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './IdeaDisplay.css'; // Import the CSS file
 
 function IdeaDisplay(props) {
-    const {ideasData} = props;
+  const { ideasData } = props;
   const categories = ['Pending', 'On Going', 'Done'];
+
   return (
     <div className="ideaDisplay-container">
       <h2 className="idea-title">Projects Ideas</h2>
@@ -12,7 +13,9 @@ function IdeaDisplay(props) {
         <thead>
           <tr>
             {categories.map((category) => (
-              <th key={category} className='tabel-head'>{category.toUpperCase()}</th>
+              <th key={category} className="table-head">
+                {category.toUpperCase()}
+              </th>
             ))}
           </tr>
         </thead>
@@ -26,19 +29,27 @@ function IdeaDisplay(props) {
                       .filter((idea) => idea.category === category)
                       .map((idea) => (
                         <li key={idea.id} className="idea-item">
-                         <div className="idea-item-header">
+                            {/* Use Link to navigate to ideainfo page */}
+                            <Link
+                                to={`/ideainfo/${idea.id}`}
+                                className="idea-item-title"
+                              >
+                          <div className="idea-item-header">
                             <div className="item-head">
-                          <div className="idea-item-votes">
-                            <span className="vote-count">{idea.votes}</span>
-                            <span className="vote-control">^</span>
+                              <div className="idea-item-votes">
+                                <span className="vote-count">{idea.votes}</span>
+                                <span className="vote-control">^</span>
+                              </div>
+                                {idea.title}
+                            </div>
+                            <div className="idea-item-user">
+                              <p className="idea-item-description">
+                                {idea.description}
+                              </p>
+                              <div className="user-icon">AS</div>
+                            </div>
                           </div>
-                          <div className="idea-item-title">{idea.title}</div>
-                          </div>
-                          <div className="idea-item-user">
-                            <p className="idea-item-description">{idea.description}</p>
-                            <div className="user-icon">AS</div>
-                          </div>
-                        </div>
+                          </Link>
                         </li>
                       ))}
                   </ul>

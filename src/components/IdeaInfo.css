@@ -1,0 +1,93 @@
+.idea-info-container {
+    background-color: #f4fafe;
+    margin-top: 0;
+}
+.idea-info-container .idea-title {
+    margin-top: 0;
+}
+.idea-info-container  h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.idea-image {
+    width: 40%;
+    height: 350px;
+    position: relative;
+    background-color: aqua;
+    margin: 0 auto;
+}
+.idea-image img {
+    width: 100%;
+    height: 100%;
+}
+
+.idea-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 30px;
+    text-align: left;
+}
+
+.idea-info .idea-description {
+    width: 60%;
+    border: 1px solid grey;
+    padding: 8px 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.idea-info .idea-owners {
+    width: 25%;
+    border: 1px solid grey;
+    padding: 8px 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.idea-info-coment  {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    text-align: left;
+}
+
+.idea-info-coment .idea-description {
+    width: 60%;
+    border: 1px solid grey;
+    padding: 8px 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.idea-info-coment .idea-owners {
+    width: 25%;
+    border: 1px solid grey;
+    padding: 8px 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    opacity: 0;
+}
+
+.idea-owners h3 {
+    margin-bottom: 8px;
+}
+.idea-owners .about-team {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.idea-owners .about-team  p {
+    margin: 0;
+    padding: 0;
+}
+.idea-owners .country-logo,
+.idea-owners .member-logo {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: aqua;
+    margin-right: 10px;
+}
