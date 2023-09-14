@@ -1,0 +1,82 @@
+.home-container {
+    height: 25vh;
+    background-image: url("../img/gumbotron.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: white;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    /* width: 100%; */
+}
+.home-container h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.home-container .right-home-cont {
+    width: 45%;
+    text-align: left;
+    z-index: 2;
+}
+
+.home-container .left-home-cont {
+    width: 40%;
+    z-index: 2;
+    margin-right: 40px;
+}
+
+.home-container .left-home-cont .project-count {
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-container .left-home-cont .project-count p {
+    background-color: aliceblue;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-container .left-home-cont .project-count p span {
+    background-color: rgb(144, 20, 20);
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    float: right;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    bottom: 50%;
+}
+
+.home-container .right-home-cont h1 {
+    font-size: 2.5rem;
+}
+
+.home-container .right-home-cont p {
+    font-size: 1.1rem;
+    line-height: 26px;
+}
+
+.home-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+}
