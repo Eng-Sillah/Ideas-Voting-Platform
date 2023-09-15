@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import "./Navsbar.css";
 
 
@@ -11,7 +12,7 @@ function Navsbar() {
       </div>
       <nav className='navs'>
       <ul>
-        <li>Home</li>
+        <li><Link to="./">Home</Link></li>
         <li>Submit Idea</li>
         <li>Sign In</li>
       </ul>

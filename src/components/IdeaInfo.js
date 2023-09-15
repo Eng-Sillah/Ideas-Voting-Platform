@@ -1,7 +1,6 @@
 // IdeaInfo.js
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import gumbotronImg from "../img/gumbotron.jpg";
 import "./IdeaInfo.css";
 
 function IdeaInfo(props) {
@@ -20,13 +19,13 @@ function IdeaInfo(props) {
         <h2>{idea.title}</h2>
         </div>
         <div className='idea-image'>
-            <img src={gumbotronImg} alt='idea image'/>
+            <img src={idea.image} alt={`${idea.title}-Img`}/>
         </div>
 
         <div className='idea-info'>
             <div className='idea-description'>
                 <h2>PROJECT DESCRIPTION</h2>
-                <p>Take care of Dolly the Doll from changing her dress to giving her some food. To brush her hair, click on the brush on the bottom right corner. To change her dress, click on the Change Dress button. To chat with Dolly, click on her.</p>
+                <p>{idea.description}</p>
                 <h2>Project Description</h2>
                 <p>Take care of Dolly the Doll from changing her dress to giving her some food. To brush her hair, click on the brush on the bottom right corner. To change her dress, click on the Change Dress button. To chat with Dolly, click on her.</p>
             </div>
@@ -37,14 +36,22 @@ function IdeaInfo(props) {
                     <p>Country Name</p>
                 </div>
                 <h3>Team Members</h3>
-                <div className='about-team'>
+                {idea.teams.map((team, key) => {
+                    return (
+                    <div className='about-team'>
+                        <div className='member-logo'></div>
+                        <p>{team.name}</p>
+                    </div>
+                    )
+                })}
+                {/* <div className='about-team'>
                     <div className='member-logo'></div>
                     <p>Member Name</p>
                 </div>
                 <div className='about-team'>
                     <div className='member-logo'></div>
                     <p>Member Name</p>
-                </div>
+                </div> */}
             </div>
         </div>
         <div className='idea-info-coment'>
@@ -63,8 +70,16 @@ function IdeaInfo(props) {
                 </div>
                 <h3>Team Members</h3>
                 <div className='about-team'>
-                    <div className='member-logo'></div>
-                    <h4>Member Name</h4>
+                    {idea.teams.map((team, key) => {
+                       return (
+                        <div>
+                        <div className='member-logo'></div>
+                        <h4>{team.name}</h4>
+                        </div>
+                       )
+                    })}
+                    
+                    
                 </div>
             </div>
         </div>

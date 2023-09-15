@@ -44,7 +44,7 @@ function IdeaDisplay(props) {
                             </div>
                             <div className="idea-item-user">
                               <p className="idea-item-description">
-                                {idea.description}
+                                {idea.request}
                               </p>
                               <div className="user-icon">AS</div>
                             </div>

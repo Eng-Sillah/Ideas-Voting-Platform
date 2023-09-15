@@ -1,16 +1,17 @@
 .home-container {
-    height: 25vh;
+    height: 40vh;
     background-image: url("../img/gumbotron.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
-    padding: 0;
     color: white;
     position: relative;
     display: flex;
     justify-content: space-between;
-    padding: 30px 50px;
+    padding-top: 90px;
+    padding-left: 30px;
+    /* padding: 90px 50px 30px; */
     /* width: 100%; */
 }
 .home-container h1 {
@@ -33,6 +34,11 @@
 .home-container .left-home-cont .project-count {
     display: flex;
     justify-content: space-between;
+}
+
+.home-container .left-home-cont .project-count div {
+    width: 100%;
+    margin: 7px;
 }
 
 .home-container .left-home-cont .project-count p {
