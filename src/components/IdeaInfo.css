@@ -84,11 +84,21 @@
     margin: 0;
     padding: 0;
 }
-.idea-owners .country-logo,
-.idea-owners .member-logo {
-    width: 25px;
-    height: 25px;
+.idea-owners .about-team .country-logo,
+.idea-owners .about-team .member-logo {
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
     background-color: aqua;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.idea-owners .about-team .country-logo img,
+.idea-owners .about-team .member-logo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
 }

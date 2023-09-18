@@ -13,8 +13,8 @@ function Navsbar() {
       <nav className='navs'>
       <ul>
         <li><Link to="./">Home</Link></li>
-        <li>Submit Idea</li>
-        <li>Sign In</li>
+        <li><Link to="/submitIdea">Submit Idea</Link></li>
+        <li><Link to="/login">Sign In</Link></li>
       </ul>
       </nav>
     </div>

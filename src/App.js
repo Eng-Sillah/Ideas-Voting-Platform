@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect  } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import IdeaInfo from './components/IdeaInfo';
 import Auth from './components/Auth';
 import Navsbar from './components/Navbars';
 import Home from './components/Home';
+import SubmitIdea from './components/SubmitIdea';
+import axios from 'axios';
 import  ideaVotingImg from "./img/idea-voting.jpeg";
 import  realEstateImg from "./img/real Estate.jpg";
 import  LoyaltyImg from "./img/loyalty.jpg";
@@ -24,6 +26,7 @@ function App() {
       votes: 10,
       category: "Pending",
       image: ideaVotingImg,
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
@@ -33,7 +36,16 @@ function App() {
           name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Sierra Leone",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 2,
@@ -43,12 +55,26 @@ function App() {
       votes: 10,
       category: "Pending",
       image: realEstateImg,
+      teamName: 'Team Name',
       teams: [
         {
-          name: "Eugen",
+          name: "Sillah",
+          photo: ""
+        },
+        {
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Guinea",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 3,
@@ -58,20 +84,26 @@ function App() {
       votes: 10,
       category: "Pending",
       image: LoyaltyImg,
+      teamName: 'Team Name',
       teams: [
         {
-          name: "John",
+          name: "Sillah",
           photo: ""
         },
         {
-          name: "Mohamed",
-          photo: ""
-        },
-        {
-          name: "Musa",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 4,
@@ -81,16 +113,26 @@ function App() {
       votes: 10,
       category: "Pending",
       image: healthImg,
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Sierra Leone",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 5,
@@ -100,16 +142,26 @@ function App() {
       votes: 5,
       category: "On Going",
       image: simpleMarketImg,
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 6,
@@ -119,16 +171,26 @@ function App() {
       votes: 5,
       category: "On Going",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Guinea",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 7,
@@ -138,16 +200,26 @@ function App() {
       votes: 5,
       category: "On Going",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 8,
@@ -157,16 +229,26 @@ function App() {
       votes: 5,
       category: "On Going",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+{
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 9,
@@ -176,16 +258,26 @@ function App() {
       votes: 8,
       category: "Done",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 10,
@@ -195,16 +287,26 @@ function App() {
       votes: 8,
       category: "Done",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 11,
@@ -214,16 +316,26 @@ function App() {
       votes: 8,
       category: "Done",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     {
       id: 12,
@@ -233,30 +345,75 @@ function App() {
       votes: 8,
       category: "Done",
       image: "",
+      teamName: 'Team Name',
       teams: [
         {
           name: "Sillah",
           photo: ""
         },
         {
-          name: "Sebastian",
+          name: "Johnethan",
           photo: ""
         }
-      ]
+      ],
+      country: [
+        {
+          name: "Ghana",
+          flag: 'Country flag',
+        }
+      ], 
+      problemIdentify: "This is the problem identify",
+      ideaToSolveTheProblem: "This is the idea to solev the problem",
+      problemSolution: "This is the solution towards the problem"
     },
     // Add more ideas with categories as needed
   ];
+
+  const [ideasData, setIdeasData] = useState(mockIdeas);
+  const fetchCountryFlag = async (countryName) => {
+    try {
+      const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`);
+      if (response.data && response.data[0] && response.data[0].flags) {
+        return response.data[0].flags.png;
+      } else {
+        return '';
+      }
+    } catch (error) {
+      console.error('Error fetching country flag:', error);
+      return ''; // Return an empty string if there's an error
+    }
+  };
+
+  const updateCountryFlags = async () => {
+    const updatedIdeas = await Promise.all(
+      mockIdeas.map(async (ideaItem) => {
+        const countryName = ideaItem.country[0].name; // Assuming each idea has one country
+        const flag = await fetchCountryFlag(countryName);
+        ideaItem.country[0].flag = flag;
+        return ideaItem;
+      })
+    );
+  
+    console.log(updatedIdeas);
+  };
+  
+  updateCountryFlags();
 
   return (
     <div className="App">
   
     
-        <Auth />
+        {/* <Auth /> */}
         <Navsbar />
         {/* <Auth /> */}
         <Routes>
           <Route path="/" element={<Home ideasData={mockIdeas} />} />
           <Route path="/ideainfo/:id" element={<IdeaInfo ideasData={mockIdeas} />} />
+          <Route path="/login" element={<Auth />} />
+          <Route
+          path="/submitIdea"
+          element={<SubmitIdea onSubmit={(newIdea) => setIdeasData([...ideasData, newIdea])} />}
+        />
       </Routes>
       
     </div>

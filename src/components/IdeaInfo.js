@@ -32,13 +32,15 @@ function IdeaInfo(props) {
             <div className='idea-owners'>
                 <h3>About the team</h3>
                 <div className='about-team'>
-                    <div className='country-logo'></div>
-                    <p>Country Name</p>
+                    <div className='country-logo'>
+                        <img src={idea.country[0].flag} />
+                    </div>
+                    <p>{idea.country[0].name}</p>
                 </div>
                 <h3>Team Members</h3>
                 {idea.teams.map((team, key) => {
                     return (
-                    <div className='about-team'>
+                    <div className='about-team' key={key}>
                         <div className='member-logo'></div>
                         <p>{team.name}</p>
                     </div>
@@ -66,13 +68,13 @@ function IdeaInfo(props) {
                 <h3>About the team</h3>
                 <div className='about-team'>
                     <div className='country-logo'></div>
-                    <h4>Country Name</h4>
+                    <h4>{idea.country[0].name}</h4>
                 </div>
                 <h3>Team Members</h3>
                 <div className='about-team'>
                     {idea.teams.map((team, key) => {
                        return (
-                        <div>
+                        <div key={key}>
                         <div className='member-logo'></div>
                         <h4>{team.name}</h4>
                         </div>

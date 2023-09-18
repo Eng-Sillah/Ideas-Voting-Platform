@@ -19,6 +19,7 @@ import {
 from 'mdb-react-ui-kit';
 
 function Auth() {
+    const [user, setUser] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     console.log(auth);
@@ -65,19 +66,19 @@ function Auth() {
         <div className="d-flex flex-row mb-3 justify-content-between w-100">
         <div className="d-flex flex-row align-items-center mb-4 ">
           <MDBIcon fas icon="user me-3" size='lg'/>
-          <MDBInput label='Your Name' id='form1' type='text' className='w-100'/>
+          <MDBInput label='Your Name' id='form1' type='text' className='w-100' onChange={(e) => setUser(e.target.value)}/>
         </div>
 
         <div className="d-flex flex-row align-items-center mb-4">
           <MDBIcon fas icon="envelope me-3" size='lg'/>
-          <MDBInput label='Your Email' id='form2' type='email'/>
+          <MDBInput label='Your Email' id='form2' type='email' onChange={(e) => setEmail(e.target.value)}/>
         </div>
         </div>
         
         <div className="d-flex flex-row mb-3 justify-content-between w-100">
         <div className="d-flex flex-row align-items-center mb-4">
           <MDBIcon fas icon="lock me-3" size='lg'/>
-          <MDBInput label='Password' id='form3' type='password'/>
+          <MDBInput label='Password' id='form3' type='password' onChange={(e) => setPassword(e.target.value)}/>
         </div>
 
         <div className="d-flex flex-row align-items-center mb-4">
@@ -92,7 +93,7 @@ function Auth() {
           <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
         </div> */}
 
-        <MDBBtn className='mb-4 w-100 bg-secondary' size='lg'>Register</MDBBtn>
+        <MDBBtn className='mb-4 w-100 bg-secondary' size='lg' onClick={signIn}>Register</MDBBtn>
         <p className="text-center h5 fw-bold mb-3 mx-1 mx-md-4 mt-1 w-100">Or</p>
         <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
          
@@ -102,7 +103,7 @@ function Auth() {
          
           <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <AiFillFacebook />Sigin with Facebook</MDBBtn>
         </div>
-        <input 
+        {/* <input 
                 placeholder="Email....." 
                 onChange={(e) => setEmail(e.target.value)} 
             />
@@ -110,10 +111,10 @@ function Auth() {
                 placeholder="Password" 
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-        />
-           <button onClick={signIn}>Login</button>
+        /> */}
+           {/* <button onClick={signIn}>Login</button>
            <button onClick={signInWithGoogle}>Sing in with Google</button>
-           <button onClick={logOut}>Logout</button>
+           <button onClick={logOut}>Logout</button> */}
 
       </MDBCol>
 
