@@ -1,0 +1,52 @@
+/* Login.css */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  section {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  section .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section .login-form .controls {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+
+  section .login-form .controls label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  section .login-form .controls input {
+    padding: 8px;
+    border-radius: 5px;
+  }
+
+  section .login-form  button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  section .login-form  button:hover {
+    background-color: rgb(230, 252, 252);
+  }

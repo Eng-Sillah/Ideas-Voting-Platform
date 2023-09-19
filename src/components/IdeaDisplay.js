@@ -6,6 +6,11 @@ function IdeaDisplay(props) {
   const { ideasData } = props;
   const categories = ['Pending', 'On Going', 'Done'];
 
+  // Helper function to sort ideas by ID in descending order
+  const sortIdeasDescending = (ideas) => {
+    return ideas.sort((a, b) => b.id - a.id);
+  };
+
   return (
     <div className="ideaDisplay-container">
       <h2 className="idea-title">Projects Ideas</h2>
@@ -25,33 +30,28 @@ function IdeaDisplay(props) {
               <td key={category}>
                 <div className="idea-container">
                   <ul className="idea-list">
-                    {ideasData
-                      .filter((idea) => idea.category === category)
-                      .map((idea) => (
-                        <li key={idea.id} className="idea-item">
-                            {/* Use Link to navigate to ideainfo page */}
-                            <Link
-                                to={`/ideainfo/${idea.id}`}
-                                className="idea-item-title"
-                              >
+                    {sortIdeasDescending(
+                      ideasData.filter((idea) => idea.category === category)
+                    ).map((idea) => (
+                      <li key={idea.id} className="idea-item">
+                        {/* Use Link to navigate to ideainfo page */}
+                        <Link to={`/ideainfo/${idea.id}`} className="idea-item-title">
                           <div className="idea-item-header">
                             <div className="item-head">
                               <div className="idea-item-votes">
                                 <span className="vote-count">{idea.votes}</span>
                                 <span className="vote-control">^</span>
                               </div>
-                                {idea.title}
+                              {idea.title}
                             </div>
                             <div className="idea-item-user">
-                              <p className="idea-item-description">
-                                {idea.request}
-                              </p>
+                              <p className="idea-item-description">{idea.request}</p>
                               <div className="user-icon">AS</div>
                             </div>
                           </div>
-                          </Link>
-                        </li>
-                      ))}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </td>

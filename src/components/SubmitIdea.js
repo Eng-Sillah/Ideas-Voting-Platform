@@ -2,7 +2,7 @@ import React, { useState, useEffect  } from 'react';
 import axios from 'axios';
 import "./SubmitIdea.css";
 
-function SubmitIdea() {
+function SubmitIdea(props) {
     const [countries, setCountries] = useState([]);
     const [countryFlag, setCountryFlag] = useState('');
     const [submittedIdeas, setSubmittedIdeas] = useState([]);
@@ -13,6 +13,7 @@ function SubmitIdea() {
       description: '',
       category: 'Pending',
       image: null,
+      teamName: '',
       teams: [{ name: '', photo: null }],
       country: "",
       // Add more fields here
@@ -20,7 +21,6 @@ function SubmitIdea() {
       lastName: '',
       ideaTitle: '',
       problemDescription: '',
-      solutionDescription: '',
       defineSolution: '',
       ideaCategory: 'Pending',
     });
@@ -75,12 +75,14 @@ function SubmitIdea() {
     };
   
     const handleImageChange = (e) => {
-      const file = e.target.files[0];
-      setIdea((prevIdea) => ({
-        ...prevIdea,
-        image: file,
-      }));
-    };
+        const file = e.target.files[0];
+        setIdea((prevIdea) => ({
+          ...prevIdea,
+          image: file,
+        }));
+      };
+
+
   
     const handleTeamInputChange = (index, e) => {
       const { name, value } = e.target;
@@ -103,13 +105,14 @@ function SubmitIdea() {
       e.preventDefault();
   
       const submittedIdea = {
-        id: submittedIdeas.length + 1,
+        id: props.ideasData.length + 1,
         title: idea.title,
         request: idea.request,
         description: idea.description,
         votes: 0,
         category: idea.category,
         image: idea.image,
+        teamName: idea.teamName,
         teams: idea.teams,
         country: [
           {
@@ -122,7 +125,6 @@ function SubmitIdea() {
         lastName: idea.lastName,
         ideaTitle: idea.ideaTitle,
         problemDescription: idea.problemDescription,
-        solutionDescription: idea.solutionDescription,
         defineSolution: idea.defineSolution,
         ideaCategory: idea.ideaCategory,
       };
@@ -135,13 +137,13 @@ function SubmitIdea() {
         description: '',
         category: 'Pending',
         image: null,
+        teamName: '',
         teams: [{ name: '', photo: null }],
         country: "",
         firstName: '',
         lastName: '',
         ideaTitle: '',
         problemDescription: '',
-        solutionDescription: '',
         defineSolution: '',
         ideaCategory: 'Pending',
       });
@@ -150,7 +152,9 @@ function SubmitIdea() {
       setFormSubmitted(true);
   
       // Log the submitted idea
-      console.log(submittedIdea);
+    //   console.log(submittedIdea);
+
+      props.onSavedNewIdeasData(submittedIdea)
     };
 
   return (
@@ -184,7 +188,13 @@ function SubmitIdea() {
         {/* Team Name */}
         <div className="form-group">
           <label htmlFor="teamName">Team Name</label>
-          <input type="text" id="teamName" />
+          <input 
+            type="text" 
+            id="teamName"
+            name='teamName'
+            value={idea.teamName}
+            onChange={handleInputChange} 
+          />
         </div>
 
         {/* Country */}
@@ -239,13 +249,13 @@ function SubmitIdea() {
 
         {/* Idea to Solve the Problem */}
         <div className="form-group">
-          <label htmlFor="solutionDescription">Idea to Solve the Problem</label>
+          <label htmlFor="description">Idea to Solve the Problem</label>
           <textarea
-            id="solutionDescription"
-            name="solutionDescription"
+            id="dec"
+            name="description"
             rows="4"
             cols="50"
-            value={idea.solutionDescription}
+            value={idea.description}
             onChange={handleInputChange}
           />
         </div>
@@ -271,6 +281,12 @@ function SubmitIdea() {
             id="ideaImage"
             name="image" 
             onChange={handleImageChange} />
+            {idea.image && typeof idea.image === 'object' && (
+            <img
+            src={URL.createObjectURL(idea.image)}
+            alt={`${idea.title} Image`}
+            />
+            )}
         </div>
 
         {/* Idea Category */}

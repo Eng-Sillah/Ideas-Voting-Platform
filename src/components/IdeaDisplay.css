@@ -57,6 +57,7 @@
       padding: 10px;
       margin-bottom: 10px;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
     
     /* Style for the idea title */
@@ -126,16 +127,23 @@
   
   .idea-item-votes .vote-count {
     margin: 0;
+    padding-top: 30px;
   }
   
   .idea-item-votes .vote-control {
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       font-weight: bolder;
       cursor: pointer;
+      z-index: 999;
+      /* background-color: aqua; */
+      width: 25px;
+      position: absolute;
+      top: 0;
+      left: 6px;
   }
   
   .idea-item-votes .vote-control:hover {
-      color: #007BFF;
+      color: #2a8ffb;
   }
   .idea-item-title {
       font-size: 1.2rem;

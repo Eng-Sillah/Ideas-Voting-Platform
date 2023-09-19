@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {auth, googleProvider} from "../components/config/firebase-config"
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import {  useNavigate } from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
 import {AiFillFacebook} from "react-icons/ai"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -19,27 +20,39 @@ import {
 from 'mdb-react-ui-kit';
 
 function Auth() {
+    const navigate = useNavigate(); // Initialize the useHistory hook
     const [user, setUser] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
     console.log(auth);
 
 
     const signIn = async () => {
-        try{
-        await createUserWithEmailAndPassword(auth, email, password)
-        } catch(err) {
-            console.error(err)
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+          // Display success message and navigate to Home
+          setSuccessMessage("Registration successful. Redirecting to Home...");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000); // Redirect after 2 seconds
+        } catch (err) {
+          console.error(err);
         }
-    }
+      }
 
-    const signInWithGoogle = async () => {
-        try{
-        await signInWithPopup(auth, googleProvider)
-        } catch(err) {
-            console.error(err)
+      const signInWithGoogle = async () => {
+        try {
+          await signInWithPopup(auth, googleProvider);
+          // Display success message and navigate to Home
+          setSuccessMessage("Sign in with Google successful. Redirecting to Home...");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000); // Redirect after 2 seconds
+        } catch (err) {
+          console.error(err);
         }
-    }
+      }
 
     const logOut = async () => {
         try{
@@ -54,82 +67,89 @@ function Auth() {
 
     return (
         <div>
-                <MDBContainer fluid>
+         <MDBContainer fluid>
 
-<MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
-  <MDBCardBody>
-    <MDBRow>
-      <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-start'>
+            <MDBCard className='text-black m-5' style={{borderRadius: '25px'}}>
+            <MDBCardBody>
+                <MDBRow>
+                <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-start'>
 
-        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-        <div className="d-flex flex-row mb-3 justify-content-between w-100">
-        <div className="d-flex flex-row align-items-center mb-4 ">
-          <MDBIcon fas icon="user me-3" size='lg'/>
-          <MDBInput label='Your Name' id='form1' type='text' className='w-100' onChange={(e) => setUser(e.target.value)}/>
-        </div>
+                    <div className="d-flex flex-row mb-3 justify-content-between w-100">
+                    <div className="d-flex flex-row align-items-center mb-4 ">
+                    <MDBIcon fas icon="user me-3" size='lg'/>
+                    <MDBInput label='Your Name' id='form1' type='text' className='w-100' onChange={(e) => setUser(e.target.value)}/>
+                    </div>
 
-        <div className="d-flex flex-row align-items-center mb-4">
-          <MDBIcon fas icon="envelope me-3" size='lg'/>
-          <MDBInput label='Your Email' id='form2' type='email' onChange={(e) => setEmail(e.target.value)}/>
-        </div>
-        </div>
-        
-        <div className="d-flex flex-row mb-3 justify-content-between w-100">
-        <div className="d-flex flex-row align-items-center mb-4">
-          <MDBIcon fas icon="lock me-3" size='lg'/>
-          <MDBInput label='Password' id='form3' type='password' onChange={(e) => setPassword(e.target.value)}/>
-        </div>
+                    <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="envelope me-3" size='lg'/>
+                    <MDBInput label='Your Email' id='form2' type='email' onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    </div>
+                    
+                    <div className="d-flex flex-row mb-3 justify-content-between w-100">
+                    <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="lock me-3" size='lg'/>
+                    <MDBInput label='Password' id='form3' type='password' onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
 
-        <div className="d-flex flex-row align-items-center mb-4">
-          <MDBIcon fas icon="key me-3" size='lg'/>
-          <MDBInput label='Repeat your password' id='form4' type='password'/>
-        </div>
-        </div>
+                    <div className="d-flex flex-row align-items-center mb-4">
+                    <MDBIcon fas icon="key me-3" size='lg'/>
+                    <MDBInput label='Repeat your password' id='form4' type='password'/>
+                    </div>
+                    </div>
 
 
 
-        {/* <div className='mb-4'>
-          <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-        </div> */}
+                    {/* <div className='mb-4'>
+                    <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
+                    </div> */}
 
-        <MDBBtn className='mb-4 w-100 bg-secondary' size='lg' onClick={signIn}>Register</MDBBtn>
-        <p className="text-center h5 fw-bold mb-3 mx-1 mx-md-4 mt-1 w-100">Or</p>
-        <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
-         
-          <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <FcGoogle />Sigin with google</MDBBtn>
-        </div>
-        <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
-         
-          <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <AiFillFacebook />Sigin with Facebook</MDBBtn>
-        </div>
-        {/* <input 
-                placeholder="Email....." 
-                onChange={(e) => setEmail(e.target.value)} 
-            />
-           <input 
-                placeholder="Password" 
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-        /> */}
-           {/* <button onClick={signIn}>Login</button>
-           <button onClick={signInWithGoogle}>Sing in with Google</button>
-           <button onClick={logOut}>Logout</button> */}
+                    <MDBBtn className='mb-4 w-100 bg-secondary' size='lg' onClick={signIn}>Register</MDBBtn>
+                    <p className="text-center h5 fw-bold mb-3 mx-1 mx-md-4 mt-1 w-100">Or</p>
+                    <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
+                    
+                    <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <FcGoogle />Sigin with google</MDBBtn>
+                    </div>
+                    <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
+                    
+                    <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <AiFillFacebook />Sigin with Facebook</MDBBtn>
+                    </div>
+                    {/* <input 
+                            placeholder="Email....." 
+                            onChange={(e) => setEmail(e.target.value)} 
+                        />
+                    <input 
+                            placeholder="Password" 
+                            onChange={(e) => setPassword(e.target.value)}
+                            type="password"
+                    /> */}
+                    {/* <button onClick={signIn}>Login</button>
+                    <button onClick={signInWithGoogle}>Sing in with Google</button>
+                    <button onClick={logOut}>Logout</button> */}
 
-      </MDBCol>
+                </MDBCol>
 
-      <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-        <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
-      </MDBCol>
+                <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
+                    <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
+                </MDBCol>
 
-    </MDBRow>
-  </MDBCardBody>
-</MDBCard>
+                </MDBRow>
+            </MDBCardBody>
+            </MDBCard>
 
-</MDBContainer>
-
+        </MDBContainer>
+        {successMessage && (
+        <p className="text-success">{successMessage}</p>
+      )}
         </div>
     )
 }
 
 export default Auth;
+
+
+
+
+

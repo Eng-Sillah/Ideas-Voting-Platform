@@ -1,6 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import IdeaInfo from './components/IdeaInfo';
+import Login from './components/Login';
 import Auth from './components/Auth';
 import Navsbar from './components/Navbars';
 import Home from './components/Home';
@@ -16,10 +17,11 @@ import './App.css';
 
 
 function App() {
-
-  const mockIdeas = [
+  const [mockIdeas, setMockIdeas] = useState([
     {
       id: 1,
+      firstName: '',
+      lastName: '',
       title: "Idea Voting Platform:",
       request: 'Feature Request',
       description: "This is the first idea.",
@@ -49,6 +51,8 @@ function App() {
     },
     {
       id: 2,
+      firstName: '',
+      lastName: '',
       title: "Real Estate Listing Website",
       request: 'Feature Request',
       description: "A real estate listing website is an excellent project idea that allows you to showcase your skills in creating platforms for property search and listing. With the MERN stack, you can build a comprehensive website where users can browse, search, and filter properties based on various criteria such as location, price range, property type, and more. Implementing features like property listings with detailed information, high-quality images, interactive maps, and contact forms can enhance the user experience and demonstrate your ability to handle complex data management and user interactions.",
@@ -78,6 +82,8 @@ function App() {
     },
     {
       id: 3,
+      firstName: '',
+      lastName: '',
       title: "Loyalty Points Viewer",
       request: 'Feature Request',
       description: "This is the first idea.",
@@ -107,6 +113,8 @@ function App() {
     },
     {
       id: 4,
+      firstName: '',
+      lastName: '',
       title: "Web3 Health Connect App",
       request: 'Feature Request',
       description: "This is the first idea.",
@@ -136,6 +144,8 @@ function App() {
     },
     {
       id: 5,
+      firstName: '',
+      lastName: '',
       title: "Simple Marketplace",
       request: 'Feature Request',
       description: "This is the second idea.",
@@ -165,6 +175,8 @@ function App() {
     },
     {
       id: 6,
+      firstName: '',
+      lastName: '',
       title: "Social Media Application",
       request: 'Feature Request',
       description: "This is the second idea.",
@@ -194,6 +206,8 @@ function App() {
     },
     {
       id: 7,
+      firstName: '',
+      lastName: '',
       title: "Task Management System",
       request: 'Feature Request',
       description: "This is the second idea.",
@@ -223,6 +237,8 @@ function App() {
     },
     {
       id: 8,
+      firstName: '',
+      lastName: '',
       title: "Recipe Sharing Website",
       request: 'Feature Request',
       description: "This is the second idea.",
@@ -252,6 +268,8 @@ function App() {
     },
     {
       id: 9,
+      firstName: '',
+      lastName: '',
       title: "Event Management System",
       request: 'Feature Request',
       description: "This is the third idea.",
@@ -281,6 +299,8 @@ function App() {
     },
     {
       id: 10,
+      firstName: '',
+      lastName: '',
       title: "Job Board Platform",
       request: 'Feature Request',
       description: "This is the third idea.",
@@ -310,6 +330,8 @@ function App() {
     },
     {
       id: 11,
+      firstName: '',
+      lastName: '',
       title: "Idea Voting Platform:",
       request: 'Feature Request',
       description: "This is the third idea.",
@@ -339,6 +361,8 @@ function App() {
     },
     {
       id: 12,
+      firstName: '',
+      lastName: '',
       title: "Idea Voting Platform:",
       request: 'Feature Request',
       description: "This is the third idea.",
@@ -367,9 +391,8 @@ function App() {
       problemSolution: "This is the solution towards the problem"
     },
     // Add more ideas with categories as needed
-  ];
+  ]);
 
-  const [ideasData, setIdeasData] = useState(mockIdeas);
   const fetchCountryFlag = async (countryName) => {
     try {
       const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`);
@@ -399,6 +422,14 @@ function App() {
   
   updateCountryFlags();
 
+  function SavedNewIdeasData(enteredNewIdea) {
+    const newIdeaData = {
+      ...enteredNewIdea
+    }
+    setMockIdeas(((previousIdea) => [...previousIdea, newIdeaData]))
+    console.log(newIdeaData)
+  }
+
   return (
     <div className="App">
   
@@ -408,12 +439,10 @@ function App() {
         {/* <Auth /> */}
         <Routes>
           <Route path="/" element={<Home ideasData={mockIdeas} />} />
-          <Route path="/ideainfo/:id" element={<IdeaInfo ideasData={mockIdeas} />} />
-          <Route path="/login" element={<Auth />} />
-          <Route
-          path="/submitIdea"
-          element={<SubmitIdea onSubmit={(newIdea) => setIdeasData([...ideasData, newIdea])} />}
-        />
+          <Route path="/ideainfo/:id" element={<IdeaInfo ideasData={mockIdeas} />} /> 
+          <Route path="/signUp" element={<Auth />} />
+          <Route path="/login" element={<Login  />} />
+          <Route path="/submitIdea" element={<SubmitIdea ideasData={mockIdeas} onSavedNewIdeasData={SavedNewIdeasData}/>}/>
       </Routes>
       
     </div>

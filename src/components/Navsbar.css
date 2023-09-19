@@ -39,3 +39,21 @@
     font-size: 1.2rem;
     font-weight: 600;
 }
+
+.navbar-container .navs ul li button {
+    background-color:aliceblue;
+    border: none;
+    color: #3b71ca;
+    font-weight: bold;
+}
+
+.navbar-container .navs ul li .logout {
+    color: red;
+}
+
+.user-avatar {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+}

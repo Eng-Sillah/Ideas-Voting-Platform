@@ -33,7 +33,7 @@ function IdeaInfo(props) {
                 <h3>About the team</h3>
                 <div className='about-team'>
                     <div className='country-logo'>
-                        <img src={idea.country[0].flag} />
+                        <img src={idea.country[0].flag} alt={idea.country[0].name}/>
                     </div>
                     <p>{idea.country[0].name}</p>
                 </div>

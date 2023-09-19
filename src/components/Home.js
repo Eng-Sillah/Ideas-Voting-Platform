@@ -3,6 +3,7 @@ import IdeaDisplay from "./IdeaDisplay";
 import "./Home.css";
 
 function Home(props) {
+    
     return (
         <div>
         <div className="home-container">
