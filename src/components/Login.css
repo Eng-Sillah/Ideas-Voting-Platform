@@ -50,3 +50,25 @@ main {
   section .login-form  button:hover {
     background-color: rgb(230, 252, 252);
   }
+
+
+
+  section .login-form .google-login-button {
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    position: relative;
+  }
+
+  section .login-form  .google-login-button img {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 10px;
+    margin-right: 10px;
+  }
+
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }

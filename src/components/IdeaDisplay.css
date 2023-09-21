@@ -168,15 +168,16 @@
   }
   
   .idea-item-user .user-icon {
-      width: 25px;
+      width: 24px;
       height: 25px;
       border-radius: 100%;
-      background-color: rgb(251, 79, 5);
+      background-color: rgb(144, 20, 20);
       margin-left: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
       color: white;
+      font-size: 14px;
   }
   
   .idea-container {
@@ -189,4 +190,101 @@
   .idea-item-title {
     text-decoration: none;
     color: #000;
+  }
+
+
+
+  /* Responsive Design */
+
+  @media screen and (max-width: 768px) {
+    /* Adjust styles for screens up to 768px wide */
+    .ideaDisplay-container {
+      padding-top: 5px;
+    }
+    .idea-title {
+      font-size: 1.5rem;
+    }
+    .idea-table th,
+    .idea-table td {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 14px;
+      word-wrap: break-word; /* Allow long words to wrap */
+      white-space: normal; /* Allow text to wrap within cells */
+    }
+    .idea-card {
+      padding: 5px;
+    }
+    .idea-item-title {
+      font-size: 1rem;
+    }
+    .idea-item-description {
+      font-size: 12px;
+    }
+    .vote-count {
+      font-size: 10px;
+    }
+    .vote-button {
+      padding: 3px 6px;
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    /* Adjust styles for screens up to 480px wide */
+    .idea-title {
+      font-size: 1.2rem;
+    }
+    .idea-table th,
+    .idea-table td {
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 12px;
+    }
+    .idea-card {
+      padding: 3px;
+    }
+    .idea-item-title {
+      font-size: 0.9rem;
+    }
+    .idea-item-description {
+      font-size: 10px;
+    }
+    .vote-count {
+      font-size: 8px;
+    }
+    .vote-button {
+      padding: 2px 4px;
+      font-size: 8px;
+    }
+  }
+  
+  /* Additional media queries for smaller screens can be added as needed */
+  
+  /* Adjust the table layout for smaller screens */
+  @media screen and (max-width: 768px) {
+    .idea-table {
+      display: block;
+    }
+    .idea-table thead {
+      display: none; /* Hide table header on small screens */
+    }
+    .idea-table tbody {
+      display: block;
+    }
+    .idea-table tr {
+      margin-bottom: 10px; /* Add spacing between table rows on small screens */
+      display: block;
+    }
+    .idea-table td {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5px;
+    }
+    .idea-table td:before {
+      content: attr(data-label); /* Add data-label attribute content as labels for each cell */
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
   }

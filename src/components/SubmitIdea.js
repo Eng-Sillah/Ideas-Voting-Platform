@@ -1,12 +1,15 @@
 import React, { useState, useEffect  } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./SubmitIdea.css";
 
 function SubmitIdea(props) {
+  const navigate = useNavigate();
     const [countries, setCountries] = useState([]);
     const [countryFlag, setCountryFlag] = useState('');
     const [submittedIdeas, setSubmittedIdeas] = useState([]);
-    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [confirmation, setConfirmation] = useState(false);
+    // const [formSubmitted, setFormSubmitted] = useState(false);
     const [idea, setIdea] = useState({
       title: '',
       request: 'Feature Request',
@@ -25,6 +28,10 @@ function SubmitIdea(props) {
       ideaCategory: 'Pending',
     });
   
+
+
+
+
     useEffect(() => {
       axios
         .get("https://restcountries.com/v3.1/all")
@@ -127,8 +134,24 @@ function SubmitIdea(props) {
         problemDescription: idea.problemDescription,
         defineSolution: idea.defineSolution,
         ideaCategory: idea.ideaCategory,
+        votersId: [],
+        comments: [
+          {
+            userPhoto: '',
+            message: 'This is the message',
+            timeStamp: 'this is the time stamp'
+          }
+        ]
       };
   
+       // Simulate a submission delay for demonstration purposes
+    setTimeout(() => {
+      // Your submission logic here
+      // For now, let's assume the submission was successful
+      setConfirmation(true);
+    }, 1000);
+
+
       setSubmittedIdeas([...submittedIdeas, submittedIdea]);
   
       setIdea({
@@ -149,7 +172,7 @@ function SubmitIdea(props) {
       });
   
       setCountryFlag('');
-      setFormSubmitted(true);
+      // setFormSubmitted(true);
   
       // Log the submitted idea
     //   console.log(submittedIdea);
@@ -157,190 +180,195 @@ function SubmitIdea(props) {
       props.onSavedNewIdeasData(submittedIdea)
     };
 
-  return (
-    <div className="submit-idea-container">
-      <h2>Submit Your Idea</h2>
-      <form onSubmit={handleSubmit}>
-        {/* First Name */}
-        <div className="form-group">
-          <label htmlFor="firstName">First Name</label>
-          <input 
-            type="text" 
-            id="firstName"
-            name="firstName"
-            value={idea.firstName}
-            onChange={handleInputChange}  
-         />
-        </div>
+    const handleContinue = () => {
+      // Redirect to the Home page or any other desired page
+      navigate('/');
+    };
 
-        {/* Last Name */}
-        <div className="form-group">
-          <label htmlFor="lastName">Last Name</label>
-          <input 
-            type="text" 
-            id="lastName"
-            name="lastName"
-            value={idea.lastName}
-            onChange={handleInputChange}
-         />
-        </div>
 
-        {/* Team Name */}
-        <div className="form-group">
-          <label htmlFor="teamName">Team Name</label>
-          <input 
-            type="text" 
-            id="teamName"
-            name='teamName'
-            value={idea.teamName}
-            onChange={handleInputChange} 
-          />
-        </div>
-
-        {/* Country */}
-        <div className='country-container'>
-        <div className="form-group">
-          <label htmlFor="country">Country</label>
-          <select
-            id="country"
-            name="country"
-            value={idea.country}
-            onChange={handleCountryChange}
-          >
-            <option value="" disabled>
-              Select your country...
-            </option>
-            {countries.map((country, index) => (
-              <option key={index} value={country}>
-                {country}
-              </option>
-            ))}
-          </select>
-        </div>
-            <div className='country-flag'>
-            {countryFlag && <img src={countryFlag} alt={`${idea.country} flag`} />}
+    return (
+      <div className="submit-idea-container">
+        {confirmation ? ( // Display confirmation message if confirmation is true
+          <div className="confirmation-message">
+            <p>Your idea has been submitted successfully!</p>
+            <button onClick={handleContinue}>Continue</button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <h2>Submit Your Idea</h2>
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                value={idea.firstName}
+                onChange={handleInputChange}
+              />
             </div>
-        </div>
-
-
-        {/* Idea Title */}
-        <div className="form-group">
-          <label htmlFor="ideaTitle">Idea Title</label>
-          <input     type="text"
+  
+            {/* Last Name */}
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                value={idea.lastName}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+            {/* Team Name */}
+            <div className="form-group">
+              <label htmlFor="teamName">Team Name</label>
+              <input
+                type="text"
+                id="teamName"
+                name="teamName"
+                value={idea.teamName}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+            {/* Country */}
+            <div className="country-container">
+              <div className="form-group">
+                <label htmlFor="country">Country</label>
+                <select
+                  id="country"
+                  name="country"
+                  value={idea.country}
+                  onChange={handleCountryChange}
+                >
+                  <option value="" disabled>
+                    Select your country...
+                  </option>
+                  {countries.map((country, index) => (
+                    <option key={index} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="country-flag">
+                {countryFlag && (
+                  <img src={countryFlag} alt={`${idea.country} flag`} />
+                )}
+              </div>
+            </div>
+  
+            {/* Idea Title */}
+            <div className="form-group">
+              <label htmlFor="ideaTitle">Idea Title</label>
+              <input
+                type="text"
                 id="ideaTitle"
                 name="title"
                 value={idea.title}
-                onChange={handleInputChange} 
-            />
-        </div>
-
-        {/* Identify the Problem */}
-        <div className="form-group">
-          <label htmlFor="problemDescription">Identify the Problem</label>
-          <textarea
-            id="problemDescription"
-            name="problemDescription"
-            rows="4"
-            cols="50"
-            value={idea.problemDescription}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        {/* Idea to Solve the Problem */}
-        <div className="form-group">
-          <label htmlFor="description">Idea to Solve the Problem</label>
-          <textarea
-            id="dec"
-            name="description"
-            rows="4"
-            cols="50"
-            value={idea.description}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        {/* Define the Solution */}
-        <div className="form-group">
-          <label htmlFor="defineSolution">Define the Solution</label>
-          <textarea
-            id="defineSolution"
-            name="defineSolution"
-            rows="4"
-            cols="50"
-            value={idea.defineSolution}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        {/* Idea Image */}
-        <div className="form-group">
-          <label htmlFor="ideaImage">Idea Image</label>
-          <input     
-            type="file"
-            id="ideaImage"
-            name="image" 
-            onChange={handleImageChange} />
-            {idea.image && typeof idea.image === 'object' && (
-            <img
-            src={URL.createObjectURL(idea.image)}
-            alt={`${idea.title} Image`}
-            />
-            )}
-        </div>
-
-        {/* Idea Category */}
-        <div className="form-group">
-          <label htmlFor="ideaCategory">Idea Category</label>
-          <select 
-            id="ideaCategory"
-            name="category" // Set the name attribute to "category"
-            value={idea.category}
-            onChange={handleInputChange} >
-            <option value="Pending">Pending</option>
-            <option value="On Going">On Going</option>
-            <option value="Done">Done</option>
-          </select>
-        </div>
-
-       {/* Team Members */}
-       <div className="form-group">
-          <label>Team Members</label>
-          {idea.teams.map((team, index) => (
-            <div key={index}>
-              <input
-                type="text"
-                name="name"
-                placeholder="Team Member Name"
-                value={team.name}
-                onChange={(e) => handleTeamInputChange(index, e)}
-              />
-              <input
-                type="file" // Use file input for photo
-                accept="image/*" // Allow only image files
-                name="photo"
-                onChange={handleImageChange} // Handle image change
+                onChange={handleInputChange}
               />
             </div>
-          ))}
-          <button type="button" onClick={handleAddTeamMember} id='add-member'>
-            + Add Team Member
-          </button>
-        </div>
-
-        {/* Submit Button */}
-        <button type="submit">Submit Idea</button>
-      </form>
-
-          {/* Display the submitted data if the form has been submitted */}
-          {formSubmitted && (
-        <div className="submitted-data">
-          <h3>Submitted Data:</h3>
-          <pre>{JSON.stringify(submittedIdeas, null, 2)}</pre>
-        </div>
-      )}
-    </div>
-  );
+  
+            {/* Identify the Problem */}
+            <div className="form-group">
+              <label htmlFor="problemDescription">Identify the Problem</label>
+              <textarea
+                id="problemDescription"
+                name="problemDescription"
+                rows="4"
+                cols="50"
+                value={idea.problemDescription}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+            {/* Idea to Solve the Problem */}
+            <div className="form-group">
+              <label htmlFor="description">Idea to Solve the Problem</label>
+              <textarea
+                id="dec"
+                name="description"
+                rows="4"
+                cols="50"
+                value={idea.description}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+            {/* Define the Solution */}
+            <div className="form-group">
+              <label htmlFor="defineSolution">Define the Solution</label>
+              <textarea
+                id="defineSolution"
+                name="defineSolution"
+                rows="4"
+                cols="50"
+                value={idea.defineSolution}
+                onChange={handleInputChange}
+              />
+            </div>
+  
+            {/* Idea Image */}
+            <div className="form-group">
+              <label htmlFor="ideaImage">Idea Image</label>
+              <input
+                type="file"
+                id="ideaImage"
+                name="image"
+                onChange={handleImageChange}
+              />
+              {idea.image && typeof idea.image === 'object' && (
+                <img src={URL.createObjectURL(idea.image)} alt={`${idea.title} Image`} />
+              )}
+            </div>
+  
+            {/* Idea Category */}
+            <div className="form-group">
+              <label htmlFor="ideaCategory">Idea Category</label>
+              <select
+                id="ideaCategory"
+                name="category"
+                value={idea.category}
+                onChange={handleInputChange}
+              >
+                <option value="Pending">Pending</option>
+                <option value="On Going">On Going</option>
+                <option value="Done">Done</option>
+              </select>
+            </div>
+  
+            {/* Team Members */}
+            <div className="form-group">
+              <label>Team Members</label>
+              {idea.teams.map((team, index) => (
+                <div key={index}>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Team Member Name"
+                    value={team.name}
+                    onChange={(e) => handleTeamInputChange(index, e)}
+                  />
+                  <input
+                    type="file" // Use file input for photo
+                    accept="image/*" // Allow only image files
+                    name="photo"
+                    onChange={handleImageChange} // Handle image change
+                  />
+                </div>
+              ))}
+              <button type="button" onClick={handleAddTeamMember} id="add-member">
+                + Add Team Member
+              </button>
+            </div>
+  
+            {/* Submit Button */}
+            <button type="submit">Submit Idea</button>
+          </form>
+        )}
+      </div>
+    );
 }
 
 export default SubmitIdea;

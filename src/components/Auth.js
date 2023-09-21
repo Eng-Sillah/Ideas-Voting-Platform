@@ -2,8 +2,7 @@ import { useState } from "react";
 import {auth, googleProvider} from "../components/config/firebase-config"
 import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import {  useNavigate } from "react-router-dom";
-import {FcGoogle} from "react-icons/fc";
-import {AiFillFacebook} from "react-icons/ai"
+import "./Auth.css"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import {
@@ -25,21 +24,23 @@ function Auth() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState(''); 
     console.log(auth);
 
 
     const signIn = async () => {
-        try {
-          await createUserWithEmailAndPassword(auth, email, password);
-          // Display success message and navigate to Home
-          setSuccessMessage("Registration successful. Redirecting to Home...");
-          setTimeout(() => {
-            navigate("/");
-          }, 2000); // Redirect after 2 seconds
-        } catch (err) {
-          console.error(err);
-        }
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        // Display success message
+        setSuccessMessage('Registration successful.');
+        // Redirect to Home after a delay
+        setTimeout(() => {
+          navigate('/');
+        }, 2000); // Redirect after 2 seconds
+      } catch (err) {
+        setErrorMessage(err.message); // Set error message on failure
       }
+    };
 
       const signInWithGoogle = async () => {
         try {
@@ -54,13 +55,13 @@ function Auth() {
         }
       }
 
-    const logOut = async () => {
-        try{
-        await signOut(auth)
-        } catch(err) {
-            console.error(err)
-        }
-    }
+    // const logOut = async () => {
+    //     try{
+    //     await signOut(auth)
+    //     } catch(err) {
+    //         console.error(err)
+    //     }
+    // }
 
    
    
@@ -100,34 +101,13 @@ function Auth() {
                     </div>
                     </div>
 
-
-
-                    {/* <div className='mb-4'>
-                    <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
-                    </div> */}
-
                     <MDBBtn className='mb-4 w-100 bg-secondary' size='lg' onClick={signIn}>Register</MDBBtn>
                     <p className="text-center h5 fw-bold mb-3 mx-1 mx-md-4 mt-1 w-100">Or</p>
                     <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
                     
-                    <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <FcGoogle />Sigin with google</MDBBtn>
+                    <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' id="google-login-button" size='lg' onClick={signInWithGoogle}> <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" />
+                     SignUp with Google</MDBBtn>
                     </div>
-                    <div className="d-flex flex-row align-items-center mb-4 justify-content-between w-100">
-                    
-                    <MDBBtn className='mb-4 w-100 d-flex align-items-center bg-light text-dark' size='lg' onClick={signInWithGoogle}> <AiFillFacebook />Sigin with Facebook</MDBBtn>
-                    </div>
-                    {/* <input 
-                            placeholder="Email....." 
-                            onChange={(e) => setEmail(e.target.value)} 
-                        />
-                    <input 
-                            placeholder="Password" 
-                            onChange={(e) => setPassword(e.target.value)}
-                            type="password"
-                    /> */}
-                    {/* <button onClick={signIn}>Login</button>
-                    <button onClick={signInWithGoogle}>Sing in with Google</button>
-                    <button onClick={logOut}>Logout</button> */}
 
                 </MDBCol>
 
@@ -142,6 +122,9 @@ function Auth() {
         </MDBContainer>
         {successMessage && (
         <p className="text-success">{successMessage}</p>
+      )}
+      {errorMessage && (
+        <p className="text-danger">{errorMessage}</p>
       )}
         </div>
     )

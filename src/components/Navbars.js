@@ -3,8 +3,9 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'; // Import useNavi
 import { auth } from '../components/config/firebase-config';
 import './Navsbar.css';
 
-function Navsbar() {
+function Navbar({ onSearch }) {
   const [user, setUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -28,6 +29,7 @@ function Navsbar() {
   const handleLogout = async () => {
     try {
       await auth.signOut();
+      navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
     }
@@ -43,16 +45,44 @@ function Navsbar() {
     }
   };
 
+  const handleSearch = () => {
+    // Call the onSearch function passed from the parent component (App.js)
+    onSearch(searchQuery);
+  };
+
+  const handleInputChange = (e) => {
+    // Update the search query state as the user types
+    setSearchQuery(e.target.value);
+  };
+
+  const handleInputKeyPress = (e) => {
+    // Trigger search when the Enter key is pressed
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  // Clear the filter and search query when clicking the Home button
+  const handleHomeClick = () => {
+    setSearchQuery('');
+    onSearch('');
+  };
   return (
     <div className='navbar-container'>
       <div className='logo-search-div'>
         <h2>Logo</h2>
-        <input type='text' placeholder='Search idea' />
+        <input
+          type='text'
+          placeholder='Search idea'
+          value={searchQuery}
+          onChange={handleInputChange}
+          onKeyPress={handleInputKeyPress}
+        />
       </div>
       <nav className='navs'>
         <ul>
           <li>
-            <Link to='./' activeclassname='active'>
+            <Link to='./' activeClassName='active' onClick={handleHomeClick}>
               Home
             </Link>
           </li>
@@ -62,7 +92,9 @@ function Navsbar() {
           <li>
             {user ? (
               <>
-                <button onClick={handleLogout} className='logout'>Logout</button>
+                <button onClick={handleLogout} className='logout'>
+                  Logout
+                </button>
                 {user.photoURL && (
                   <img
                     src={user.photoURL}
@@ -72,7 +104,7 @@ function Navsbar() {
                 )}
               </>
             ) : (
-              <NavLink to='/login' activeclassname='active'>
+              <NavLink to='/login' activeClassName='active'>
                 Login
               </NavLink>
             )}
@@ -83,4 +115,4 @@ function Navsbar() {
   );
 }
 
-export default Navsbar;
+export default Navbar;

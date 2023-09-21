@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState  } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import IdeaInfo from './components/IdeaInfo';
 import Login from './components/Login';
@@ -17,6 +17,7 @@ import './App.css';
 
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [mockIdeas, setMockIdeas] = useState([
     {
       id: 1,
@@ -47,7 +48,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 2,
@@ -78,7 +87,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 3,
@@ -109,7 +126,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 4,
@@ -140,7 +165,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 5,
@@ -171,7 +204,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 6,
@@ -202,7 +243,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 7,
@@ -233,15 +282,23 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 8,
       firstName: '',
       lastName: '',
-      title: "Recipe Sharing Website",
+      title: "Event Management System",
       request: 'Feature Request',
-      description: "This is the second idea.",
+      description: "An event management system is a practical and challenging project idea that allows you to demonstrate your ability to build complex applications using the MERN stack. With this project, you can create a platform that enables users to organize and manage events efficiently. Users can create event listings, manage registrations, send notifications, and track attendance.Implementing features such as event calendars, ticketing systems, attendee management, and venue selection can enhance the functionality of your event management system. Additionally, consider incorporating real-time updates or chat functionalities to facilitate communication between event organizers and attendees.To further enhance your project, you can integrate with external services such as payment gateways for ticket sales, social media APIs for event promotion, or even location-based APIs to provide directions and nearby amenities. These integrations will not only demonstrate your ability to work with third-party services but also add value to the overall event management experience.",
       votes: 5,
       category: "On Going",
       image: "",
@@ -264,7 +321,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 9,
@@ -295,7 +360,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 10,
@@ -326,13 +399,21 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 11,
       firstName: '',
       lastName: '',
-      title: "Idea Voting Platform:",
+      title: "Idea Voting Avenue:",
       request: 'Feature Request',
       description: "This is the third idea.",
       votes: 8,
@@ -357,7 +438,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     {
       id: 12,
@@ -388,7 +477,15 @@ function App() {
       ], 
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
-      problemSolution: "This is the solution towards the problem"
+      problemSolution: "This is the solution towards the problem",
+      votersId: [],
+      comments: [
+        {
+          userPhoto: '',
+          message: 'This is the message',
+          timeStamp: 'this is the time stamp'
+        }
+      ]
     },
     // Add more ideas with categories as needed
   ]);
@@ -430,16 +527,45 @@ function App() {
     console.log(newIdeaData)
   }
 
+  const updateVotes = (updatedIdeas) => {
+    setMockIdeas(updatedIdeas);
+  };
+
+  const updateComment = (ideaId, newComment) => {
+    const updatedIdeas = mockIdeas.map((idea) => {
+      if (idea.id === ideaId) {
+        // Clone the idea and update its comments array
+        const updatedIdea = { ...idea };
+        updatedIdea.comments.push(newComment);
+        return updatedIdea;
+      }
+      return idea;
+    });
+
+    setMockIdeas(updatedIdeas);
+  };
+
+  const handleSearch = (query) => {
+    // Update the search query state
+    setSearchQuery(query);
+  };
+
+  // Filter ideas based on the search query
+  const filteredIdeas = mockIdeas.filter((idea) =>
+    idea.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
     <div className="App">
   
     
         {/* <Auth /> */}
-        <Navsbar />
+        <Navsbar onSearch={handleSearch} />
         {/* <Auth /> */}
         <Routes>
-          <Route path="/" element={<Home ideasData={mockIdeas} />} />
-          <Route path="/ideainfo/:id" element={<IdeaInfo ideasData={mockIdeas} />} /> 
+          <Route path="/" element={<Home ideasData={filteredIdeas} />} />
+          <Route path="/ideainfo/:id" element={<IdeaInfo ideasData={mockIdeas} onUpdateVotes={updateVotes} onUpdateComment={updateComment}/>} /> 
           <Route path="/signUp" element={<Auth />} />
           <Route path="/login" element={<Login  />} />
           <Route path="/submitIdea" element={<SubmitIdea ideasData={mockIdeas} onSavedNewIdeasData={SavedNewIdeasData}/>}/>

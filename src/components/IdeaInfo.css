@@ -3,9 +3,30 @@
     margin-top: 0;
     padding-top: 90px;
 }
-.idea-info-container .idea-title {
-    margin-top: 0;
+.idea-info-container .ideaDisplay-title {
+    margin: 5px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
+
+.idea-info-container .ideaDisplay-title .vote-container {
+    margin-right: 50px;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.idea-info-container .ideaDisplay-title .vote-container button {
+    text-decoration: none;
+    background-color: #3b71ca;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 30px;
+}
+
 .idea-info-container  h2 {
     margin-top: 0;
     padding-top: 0;
@@ -102,3 +123,81 @@
     height: 100%;
     border-radius: 100%;
 }
+
+
+/* Existing styles for .idea-info-container and .ideaDisplay-title remain the same */
+
+/* Add styles for the comment form */
+.idea-info-container .comment-form {
+    margin: 20px 20px 100px 20px; /* Adjust as needed */
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .idea-info-container .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .idea-info-container .comment-form button {
+    background-color: #3b71ca;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  /* Add styles for the comment section */
+  .idea-info-container .comment-section {
+    margin: 20px; /* Adjust as needed */
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .idea-info-container .comment-section h3 {
+    margin-top: 0;
+  }
+  
+  .idea-info-container .comment-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .idea-info-container .comment-section li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+  }
+  
+  .idea-info-container .comment-section li:last-child {
+    border-bottom: none; /* Remove border for the last comment */
+  }
+  
+  /* Add styles for individual comments */
+  .idea-info-container .comment-section strong {
+    font-weight: bold;
+  }
+  
+  .idea-info-container .comment-section li p {
+    margin: 0;
+  }
+
+  .comment-section img {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 20px;
+  }
+  
