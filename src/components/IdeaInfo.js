@@ -169,7 +169,7 @@ function IdeaInfo(props) {
         <ul>
           {comments.map((comment, index) => (
             <li key={index}>
-              <img src={comment.userPhoto} />
+              <img src={comment.userPhoto} alt={comment.timeStamp}/>
               <div className='message'>
                 <h5>{comment.message}</h5>
                 <p>{comment.timeStamp}</p>

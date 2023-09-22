@@ -5,6 +5,7 @@ import "./Home.css";
 
 function Home(props) {
       // Filter the ideasData to get pending ideas
+      
   const pendingIdeas = props.ideasData.filter((idea) => idea.category === "Pending");
   const onGoingIdeas = props.ideasData.filter((idea) => idea.category === "On Going");
     return (
@@ -24,7 +25,7 @@ function Home(props) {
                 </div>
             </div>
             <div className="ideaImg">
-                <img src={ideaImg} alt="Idea Image"/>
+                <img src={ideaImg} alt="Image"/>
             </div>
            </div>
             <div className="overlay"></div>

@@ -319,7 +319,7 @@ function SubmitIdea(props) {
                 onChange={handleImageChange}
               />
               {idea.image && typeof idea.image === 'object' && (
-                <img src={URL.createObjectURL(idea.image)} alt={`${idea.title} Image`} />
+                <img src={URL.createObjectURL(idea.image)} alt={idea.id} />
               )}
             </div>
   

@@ -32,6 +32,7 @@ function Auth() {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
         // Display success message
+        user = ""
         setSuccessMessage('Registration successful.');
         // Redirect to Home after a delay
         setTimeout(() => {
@@ -55,13 +56,6 @@ function Auth() {
         }
       }
 
-    // const logOut = async () => {
-    //     try{
-    //     await signOut(auth)
-    //     } catch(err) {
-    //         console.error(err)
-    //     }
-    // }
 
    
    
