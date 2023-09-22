@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {auth, googleProvider} from "../components/config/firebase-config"
-import { createUserWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup} from "firebase/auth";
 import {  useNavigate } from "react-router-dom";
 import "./Auth.css"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -27,14 +27,17 @@ function Auth() {
     const [errorMessage, setErrorMessage] = useState(''); 
     console.log(auth);
 
-
+    user = ""
     const signIn = async () => {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
         // Display success message
-        user = ""
+        
         setSuccessMessage('Registration successful.');
         // Redirect to Home after a delay
+        const a = {
+          user,
+        }
         setTimeout(() => {
           navigate('/');
         }, 2000); // Redirect after 2 seconds
