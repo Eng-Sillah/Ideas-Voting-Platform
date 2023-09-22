@@ -25,7 +25,7 @@ function Home(props) {
                 </div>
             </div>
             <div className="ideaImg">
-                <img src={ideaImg} alt="Image"/>
+                <img src={ideaImg} alt=".."/>
             </div>
            </div>
             <div className="overlay"></div>

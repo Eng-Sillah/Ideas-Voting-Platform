@@ -20,7 +20,7 @@ from 'mdb-react-ui-kit';
 
 function Auth() {
     const navigate = useNavigate(); // Initialize the useHistory hook
-    const [user, setUser] = useState("")
+    let [user, setUser] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
