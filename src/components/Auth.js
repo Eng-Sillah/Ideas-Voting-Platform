@@ -35,9 +35,7 @@ function Auth() {
         
         setSuccessMessage('Registration successful.');
         // Redirect to Home after a delay
-        const a = {
-          user,
-        }
+      console.log(user)
         setTimeout(() => {
           navigate('/');
         }, 2000); // Redirect after 2 seconds
