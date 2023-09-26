@@ -82,16 +82,47 @@ function IdeaInfo(props) {
     return <div> Idea not found.</div>;
   }
 
+
+  const handleCopyWalletAddress = () => {
+    // Check if idea contains a wallet address property
+    if (idea.walletAddress) {
+      // Create a text area element to hold the wallet address
+      const textArea = document.createElement('textarea');
+      textArea.value = idea.walletAddress;
+
+      // Append the text area to the document
+      document.body.appendChild(textArea);
+
+      // Select the text within the text area
+      textArea.select();
+
+      try {
+        // Copy the selected text to the clipboard
+        document.execCommand('copy');
+        alert('Wallet Address copied to clipboard');
+      } catch (err) {
+        console.error('Failed to copy wallet address: ', err);
+      } finally {
+        // Remove the text area from the document
+        document.body.removeChild(textArea);
+      }
+    }
+  };
+
   return (
     <div className='idea-info-container'>
         <div className='ideaDisplay-title'>
         <h2>{idea.title}</h2>
+        <div className='walletAddress'>
+          <button onClick={handleCopyWalletAddress}>Wallet Address</button>
+        </div>
         <div className='vote-container'>
         <button onClick={handleVote} disabled={hasVoted}>
             {hasVoted ? 'Voted' : 'Vote'}
           </button>
             <h3>{idea.votes}</h3>
         </div>
+
         </div>
         <div className='idea-image'>
             <img src={idea.image} alt={`${idea.title}-Img`}/>

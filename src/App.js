@@ -49,6 +49,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -88,6 +89,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -127,6 +129,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -166,6 +169,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -205,6 +209,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -244,6 +249,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -283,6 +289,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -314,7 +321,7 @@ function App() {
         }
       ],
       country: [
-{
+        {
           name: "Ghana",
           flag: 'Country flag',
         }
@@ -322,6 +329,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -361,6 +369,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -400,6 +409,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -439,6 +449,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {
@@ -478,6 +489,7 @@ function App() {
       problemIdentify: "This is the problem identify",
       ideaToSolveTheProblem: "This is the idea to solev the problem",
       problemSolution: "This is the solution towards the problem",
+      walletAddress: 'your wallet Address',
       votersId: [],
       comments: [
         {

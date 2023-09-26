@@ -27,6 +27,15 @@
     padding: 5px 30px;
 }
 
+.idea-info-container .ideaDisplay-title .walletAddress button {
+  text-decoration: none;
+  background-color: #3b71ca;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 30px;
+}
+
 .idea-info-container  h2 {
     margin-top: 0;
     padding-top: 0;

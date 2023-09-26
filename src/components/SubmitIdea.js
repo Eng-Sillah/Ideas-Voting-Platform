@@ -24,6 +24,7 @@ function SubmitIdea(props) {
       lastName: '',
       ideaTitle: '',
       problemDescription: '',
+      walletAddress: '',
       defineSolution: '',
       ideaCategory: 'Pending',
     });
@@ -133,6 +134,7 @@ function SubmitIdea(props) {
         ideaTitle: idea.ideaTitle,
         problemDescription: idea.problemDescription,
         defineSolution: idea.defineSolution,
+        walletAddress: idea.walletAddress,
         ideaCategory: idea.ideaCategory,
         votersId: [],
         comments: [
@@ -167,6 +169,7 @@ function SubmitIdea(props) {
         lastName: '',
         ideaTitle: '',
         problemDescription: '',
+        walletAddress: '',
         defineSolution: '',
         ideaCategory: 'Pending',
       });
@@ -336,6 +339,16 @@ function SubmitIdea(props) {
                 <option value="On Going">On Going</option>
                 <option value="Done">Done</option>
               </select>
+            </div>
+            {/* Wallet Address */}
+            <div className="form-group">
+              <label htmlFor="ideaCategory">Your Crypto Wallet Address</label>
+              <input
+                type="text"
+                id="walletAddress"
+                name="walletAddress"
+                onChange={handleInputChange}
+              />
             </div>
   
             {/* Team Members */}
